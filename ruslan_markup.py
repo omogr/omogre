@@ -10,7 +10,7 @@ parser.add_argument("--data_path", type=str, default=None, help="Omogre model di
 parser.add_argument("--head", type=int, default=None, help="Process only head of file")
 args = parser.parse_args()
           
-acc = AccentuatorTranscriptor(data_path='omogre_data')
+acc = AccentuatorTranscriptor(data_path=args.data_path)
 
 def save_markup(src_markup_parts, sentence_list, fout_name):
     assert len(src_markup_parts) == len(sentence_list)
@@ -66,8 +66,8 @@ if __name__ == '__main__':
     # natasha
     # http://dataset.sova.ai/SOVA-TTS/natasha/natasha_dataset.tar
 
-    if args.data_path is not None:
-        download_model(cache_dir='natasha_ruslan_markup', file_name='natasha_ruslan')
+    
+    download_model(cache_dir='natasha_ruslan_markup', file_name='natasha_ruslan')
 
     for dataset_name in ['natasha', 'ruslan']:
         process(dataset_name)
