@@ -54,7 +54,10 @@ class AccentuatorTranscriptor(load_model=True, data_path=None, device_name=None,
 
 	*load_model* - загружать ли данные, если они ещё не загружены
 	*data_path* - директория, в которую загружать данные.
-	*device_name* - параметр, определяющий использование GPU. Соответствует параметру инициализации класс [torch.device](https://pytorch.org/docs/stable/tensor_attributes.html#torch.device). Допустимые значения - "cpu", "cuda", "cuda:0" и т.д. По умолчанию если torch видит GPU, то "cuda", иначе "cpu".
+	*device_name* - параметр, определяющий использование GPU.
+     	Соответствует параметру инициализации класса [torch.device](https://pytorch.org/docs/stable/tensor_attributes.html#torch.device).
+		Допустимые значения - "cpu", "cuda", "cuda:0" и т.д.
+		По умолчанию если torch видит GPU, то "cuda", иначе "cpu".
 	*punct* - список небуквенных символов, которые переносятся из исходного текста в транскрипцию.  
 	 
 Входы класса `AccentuatorTranscriptor`:
