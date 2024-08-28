@@ -12,7 +12,7 @@
 
 * С помощью GIT
 ```
-pip install git+https://github.com/omogr/omogre/omogre.git
+pip install git+https://github.com/omogr/omogre.git
 ```
 
 * При помощи pip
