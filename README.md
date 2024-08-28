@@ -52,15 +52,17 @@ print(accentuator_transcriptor.transcribe(sentence_list))
 
 Все параметры не являются обязательными. 
 
-`class AccentuatorTranscriptor(load_model=True, data_path=None, device_name=None, punct='.,!?')`
+```
+class AccentuatorTranscriptor(load_model=True, data_path=None, device_name=None, punct='.,!?')
+```
 
 	`load_model` - загружать ли данные, если они ещё не загружены
 	`data_path` - директория, в которую загружать данные.
 	`device_name` - параметр для torch.load_model. Допустимые значения - "cpu", "cuda", "cuda:0" и т.д.
 		По умолчанию "cuda", если есть соответствующее GPU, иначе "cpu".
-	`punct` - список небуквенных символов, которые переносятся из исзодного текста в транскрипцию.  
+	`punct` - список небуквенных символов, которые переносятся из исходного текста в транскрипцию.  
 	 
-Входы класса **AccentuatorTranscriptor**:
+Входы класса `AccentuatorTranscriptor`:
 
 ```
 	accentuate(sentence_list)
@@ -106,12 +108,12 @@ markup-файлы этих корпусов уже содержат расста
 
 ## Зависимости
 
-Для запуска библиотеки требуются следующие модули:
+Для запуска библиотеки требуются следующее:
 * [Python 3](https://www.python.org/)
 * [Pytorch](https://pytorch.org/)
 * [Numpy](https://numpy.org/)
 
-Кроме того, для автоматического скачивания моделей требуются:
+Кроме того, для автоматического скачивания данных требуются:
 * [tqdm](https://tqdm.github.io/)
 * [requests](python -m pip install requests)
 
@@ -125,5 +127,5 @@ markup-файлы этих корпусов уже содержат расста
 
 ## Лицензия
 
-CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ru)
+[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ru)
 
