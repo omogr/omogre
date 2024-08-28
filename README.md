@@ -22,7 +22,7 @@ pip install -e .
 
 * Вручную
 
-Если хочется предварительно оценить работоспособность пакета, то можно скачать код с гитхаба, руками установить необходимые библиотеки (torch, numpy, tqdm, requests), запустить скрипт `test.py`
+Если хочется предварительно оценить работоспособность пакета, то можно скачать код с гитхаба, руками установить необходимые библиотеки (torch, numpy, tqdm, requests), запустить скрипт `test.py`.
 
 ## Скачивание данных
 
@@ -52,9 +52,12 @@ print(accentuator_transcriptor.transcribe(sentence_list))
 class AccentuatorTranscriptor(load_model=True, data_path=None, device_name=None, punct='.,!?')
 ```
 
-`load_model` - загружать ли данные, если они ещё не загружены
+`load_model` - загружать ли данные, если они ещё не загружены.
+
 `data_path` - директория, в которую загружать данные.
+
 `device_name` - параметр, определяющий использование GPU. Соответствует параметру инициализации класса [torch.device](https://pytorch.org/docs/stable/tensor_attributes.html#torch.device).	Допустимые значения - "cpu", "cuda", "cuda:0" и т.д. По умолчанию если torch видит GPU, то "cuda", иначе "cpu".
+
 `punct` - список небуквенных символов, которые переносятся из исходного текста в транскрипцию.  
 	 
 Входы класса `AccentuatorTranscriptor`:
