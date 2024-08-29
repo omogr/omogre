@@ -146,7 +146,7 @@ class AccentTokenizer:
                 punct_tokens = self.encode(tpunct_str)
                 all_ids.extend(punct_tokens)
                 
-        if len(all_ids) >= 510: # 512
+        if len(all_ids) > 510: # 512
             is_easy = True
 
         return all_ids, all_spans, is_easy
