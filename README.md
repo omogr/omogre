@@ -58,7 +58,7 @@ class AccentuatorTranscriptor(data_path=None, download=True, device_name=None, p
 
 `punct` - список небуквенных символов, которые переносятся из исходного текста в транскрипцию.
 
-`download` - следует ли загружать модель из интернета, если она не найдена.
+`download` - следует ли загружать модель из интернета, если она не найдена в директории `data_path`.
 
 	 
 Входы класса `AccentuatorTranscriptor`:
