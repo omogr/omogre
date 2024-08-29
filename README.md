@@ -49,7 +49,7 @@ print(accentuator_transcriptor.transcribe(sentence_list))
 Все параметры не являются обязательными. 
 
 ```
-class AccentuatorTranscriptor(data_path=None, device_name=None, punct='.,!?')
+class AccentuatorTranscriptor(data_path=None, download=True, device_name=None, punct='.,!?')
 ```
 
 `data_path` - директория, в которую загружать данные.
@@ -57,6 +57,9 @@ class AccentuatorTranscriptor(data_path=None, device_name=None, punct='.,!?')
 `device_name` - параметр, определяющий использование GPU. Соответствует параметру инициализации класса [torch.device](https://pytorch.org/docs/stable/tensor_attributes.html#torch.device).	Допустимые значения - "cpu", "cuda", "cuda:0" и т.д. По умолчанию если torch видит GPU, то "cuda", иначе "cpu".
 
 `punct` - список небуквенных символов, которые переносятся из исходного текста в транскрипцию.
+
+`download` - следует ли загружать модель из интернета, если она не найдена.
+
 	 
 Входы класса `AccentuatorTranscriptor`:
 

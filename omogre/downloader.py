@@ -10,7 +10,7 @@ from tqdm import tqdm
 
 logger = logging.getLogger(__name__)
 
-def download_model(cache_dir, file_name='accentuator_transcriptor'):
+def download_model(cache_dir, file_name='accentuator_transcriptor_tiny'):
     model_url = "https://huggingface.co/omogr/omogre/resolve/main/%s.gz?download=true"%file_name
 
     try:

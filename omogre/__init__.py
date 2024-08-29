@@ -19,7 +19,7 @@ def punct_filter(input_string, punct=None):
     return ''.join(output_string)
 
 
-def find_model(cache_dir=None, file_name='accentuator_transcriptor'):    
+def find_model(file_name='accentuator_transcriptor_tiny', cache_dir=None, download=True):    
     from pathlib import Path
     if cache_dir is None:
         try:
@@ -35,23 +35,29 @@ def find_model(cache_dir=None, file_name='accentuator_transcriptor'):
     if not cache_dir:
         raise EnvironmentError('Cannot find OMOGR_CACHE path')
 
+    if os.path.exists(cache_dir):
+        if os.path.isdir(cache_dir):
+            etag_file_name = os.path.join(cache_dir, 'etag')
+            if os.path.isfile(etag_file_name):
+                return cache_dir
+
+    if not download:
+        raise EnvironmentError('Cannot find model data')
+
     if not os.path.exists(cache_dir):
         os.makedirs(cache_dir)
         
     if not os.path.isdir(cache_dir):
         raise EnvironmentError('Cannot create directory %s'%cache_dir)
-    
-    etag_file_name = os.path.join(cache_dir, 'etag')
-    if os.path.isfile(etag_file_name):
-        return cache_dir
-
+            
     from .downloader import download_model
     return download_model(cache_dir, file_name=file_name)
         
 
 class AccentuatorTranscriptor:
-    def __init__(self, data_path=None, device_name=None, punct='.,!?'):        
-        loaded_data_path = find_model(cache_dir=data_path)
+    def __init__(self, data_path=None, download=True, device_name=None, punct='.,!?'):        
+        loaded_data_path = find_model(file_name='accentuator_transcriptor_tiny',
+            cache_dir=data_path, download=download)
             
         self.punct = punct
         transcriptor_data_path = os.path.join(loaded_data_path, 'transcriptor/')
