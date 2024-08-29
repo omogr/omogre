@@ -13,9 +13,10 @@ def invert_vocab(vocab):
 
 
 def clean_russian_g2p_trascription(text: str) -> str:
+    
     result = text.replace("<DELETE>", "").replace("+", "").replace("~", "").replace("ʑ", "ɕ:")
     return result.replace("ɣ", "x").replace(":", "ː").replace("'", "`").replace("_", "")
-
+    
 
 def get_vocab_from_list(alphabet):
     vocab = {}
@@ -181,14 +182,17 @@ class UnkWords:
             indx += 1
                    
         indx = word_len-1
-        prev = 0    
+        prev = 0
+         
         res = []
         
         while indx > 0 and len(best_path[indx]) > 0:
             path_eval, prev, phoneme1, phoneme2 = best_path[indx][prev]
-
+            res.append(phoneme1)
             indx -= 1
+
         res.reverse()
+        
         if len(res) > 3:
             # strip '<BOW>' '<BOW>' ... '<EOW>'            
             return clean_russian_g2p_trascription(''.join(res[2:-1]))
