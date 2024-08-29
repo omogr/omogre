@@ -11,7 +11,7 @@ from tqdm import tqdm
 logger = logging.getLogger(__name__)
 
 def download_model(cache_dir, file_name='accentuator_transcriptor'):
-    model_url = "https://huggingface.co/Babillu/omogr/resolve/main/%s.gz?download=true"%file_name
+    model_url = "https://huggingface.co/omogr/omogre/resolve/main/%s.gz?download=true"%file_name
 
     try:
         response = requests.head(model_url, allow_redirects=True)
@@ -42,6 +42,7 @@ def download_model(cache_dir, file_name='accentuator_transcriptor'):
         temp_file.flush()
         # sometimes fileobj starts at the current position, so go to the start
         temp_file.seek(0)
+        etag_file_name = os.path.join(cache_dir, 'etag')
         try:
             logger.info("model archive extractall to %s", cache_dir) #, temp_file.name)
             with tarfile.open(fileobj=temp_file, mode='r:gz') as archive:

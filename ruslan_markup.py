@@ -1,6 +1,6 @@
 # coding=utf-8
 
-from omogre import AccentuatorTranscriptor, download_model
+from omogre import AccentuatorTranscriptor, find_model
 import time
 from argparse import ArgumentParser
 
@@ -67,7 +67,7 @@ if __name__ == '__main__':
     # http://dataset.sova.ai/SOVA-TTS/natasha/natasha_dataset.tar
 
     
-    download_model(cache_dir='natasha_ruslan_markup', file_name='natasha_ruslan')
+    find_model(cache_dir='natasha_ruslan_markup', file_name='natasha_ruslan')
 
     for dataset_name in ['natasha', 'ruslan']:
         process(dataset_name)

@@ -19,7 +19,7 @@ def punct_filter(input_string, punct=None):
     return ''.join(output_string)
 
 
-def download_model(cache_dir=None):    
+def find_model(cache_dir=None, file_name='accentuator_transcriptor'):    
     from pathlib import Path
     if cache_dir is None:
         try:
@@ -46,13 +46,12 @@ def download_model(cache_dir=None):
         return cache_dir
 
     from .downloader import download_model
-    return download_model(cache_dir)
+    return download_model(cache_dir, file_name=file_name)
         
 
 class AccentuatorTranscriptor:
-    def __init__(self, load_model=True, data_path=None, device_name=None, punct='.,!?'):        
-        if load_model:
-            loaded_data_path = download_model(cache_dir=data_path)
+    def __init__(self, data_path=None, device_name=None, punct='.,!?'):        
+        loaded_data_path = find_model(cache_dir=data_path)
             
         self.punct = punct
         transcriptor_data_path = os.path.join(loaded_data_path, 'transcriptor/')
