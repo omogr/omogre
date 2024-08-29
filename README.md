@@ -52,7 +52,7 @@ print(accentuator_transcriptor.transcribe(sentence_list))
 class AccentuatorTranscriptor(data_path=None, download=True, device_name=None, punct='.,!?')
 ```
 
-`data_path` - директория, в которую загружать данные.
+`data_path` - директория, в которой должна находиться модель.
 
 `device_name` - параметр, определяющий использование GPU. Соответствует параметру инициализации класса [torch.device](https://pytorch.org/docs/stable/tensor_attributes.html#torch.device).	Допустимые значения - "cpu", "cuda", "cuda:0" и т.д. По умолчанию если torch видит GPU, то "cuda", иначе "cpu".
 
