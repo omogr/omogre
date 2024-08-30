@@ -28,6 +28,7 @@ def find_model(file_name: str = INITIAL_MODEL, cache_dir: str = None, download: 
         except (AttributeError, ImportError):
             omogr_cache = os.getenv('OMOGR_CACHE', os.path.join(os.path.expanduser("~"), '.omogr_data'))
 
+        print('data_path', omogr_cache)
         cache_dir = omogr_cache
 
     if sys.version_info[0] == 3 and isinstance(cache_dir, Path):
@@ -35,6 +36,7 @@ def find_model(file_name: str = INITIAL_MODEL, cache_dir: str = None, download: 
 
     if not cache_dir:
         raise EnvironmentError('Cannot find OMOGR_CACHE path')
+        
 
     if os.path.exists(cache_dir):
         if os.path.isdir(cache_dir):
