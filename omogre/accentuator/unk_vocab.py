@@ -3,7 +3,7 @@ import bisect
 import pickle
 import os
 
-def common_left(str1, str2):
+def common_left(str1: str, str2: str) -> int:
     if len(str1) < len(str2):
         for index, tc in enumerate(str1):
            if str2[index] != tc:
@@ -16,7 +16,7 @@ def common_left(str1, str2):
     return len(str2)    
 
 
-def get_neib_pos(key_pos_list, key, pos, min_len=3):    
+def get_neib_pos(key_pos_list: list, key: str, pos: int, min_len: int = 3) -> list:    
     result = [pos]
     len1 = 0
     len2 = 0
@@ -61,40 +61,40 @@ def get_neib_pos(key_pos_list, key, pos, min_len=3):
 
 
 class UnkVocab:
-    def __init__(self, data_path, encoding='utf-8'):
+    def __init__(self, data_path: str, encoding: str = 'utf-8'):
         unk_file = os.path.join(data_path, 'unk_vocab.pickle')
 
         with open(unk_file, 'rb') as finp:
-            self.search_key, self.all_tails = pickle.load(finp)
+            self.acc_vocab, self.all_tails = pickle.load(finp)
 
-    def cmp_form_norm(self, form, tp, res):       
-        norm = self.search_key[tp][0]
-        cl = common_left(form, norm)
-        key = (form[cl:], norm[cl:])
+    def cmp_form_norm(self, form: str, tpos: int, res: list):       
+        norm = self.acc_vocab[tpos][0]
+        num_equ_chars: int = common_left(form, norm)
+        key = (form[num_equ_chars:], norm[num_equ_chars:])
 
         if key in self.all_tails:
-            res.append( (cl, self.search_key[tp]) )
+            res.append( (num_equ_chars, self.acc_vocab[tpos]) )
     
-    def search_neibs(self, text):
+    def search_neibs(self, text: str) -> list:
         key = (text, '')
 
-        all_len = len(self.search_key)
+        all_len = len(self.acc_vocab)
         if all_len < 1:
             return []
-        if key < self.search_key[0]:
-            return get_neib_pos(self.search_key, text, 0)
+        if key < self.acc_vocab[0]:
+            return get_neib_pos(self.acc_vocab, text, 0)
             
-        try_pos = bisect.bisect_left(self.search_key, key)
+        try_pos = bisect.bisect_left(self.acc_vocab, key)
             
-        return get_neib_pos(self.search_key, text, try_pos)
+        return get_neib_pos(self.acc_vocab, text, try_pos)
 
-    def get_neibs(self, text):
+    def get_neibs(self, text: str) -> list:
         res = []
         for tpos in self.search_neibs(text):
             self.cmp_form_norm(text, tpos, res)
         return res
     
-    def get_acc_pos(self, text):
+    def get_acc_pos(self, text: str) -> int:
         result = self.get_neibs(text)
         if len(result) < 1:
             return -1
@@ -110,6 +110,3 @@ class UnkVocab:
             return -1
         return acc_pos
 
-
-if __name__ == "__main__":        
-    pass  

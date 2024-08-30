@@ -12,7 +12,9 @@ alphabet = ' абвгдеёжзийклмнопрстуфхцчшщъыьэюя'
 TokenSpan = collections.namedtuple(  # pylint: disable=invalid-name
             "TokenSpan", ["text", "label", "punct", "span"])
 
-def get_tokens(sentence):
+MAX_BATCH_TOKEN_NUM = 6000 # 250 * 24
+
+def get_tokens(sentence: str):
     tokens = [bos_token_id]
 
     err_cnt = 0
@@ -32,7 +34,7 @@ def get_tokens(sentence):
     
     
 class InfBatchFromSentenceList:
-    def __init__(self, sentence_list): # ='text/forms_g2p_prep.txt'
+    def __init__(self, sentence_list: list):
         self.all_entries = []
 
         for line_indx, sentence in enumerate(sentence_list):
@@ -58,11 +60,10 @@ class InfBatchFromSentenceList:
             self.iter += 1            
             self.file_pos = 0
             
-    def get_next_batch(self, is_test=True):
+    def get_next_batch(self, is_test: bool = True):
         if is_test:
             assert self.is_first_iter()
 
-        num_tokens = 250 * 24
         max_length = 1
         batch_data = []
         sentence_data = []
@@ -77,7 +78,7 @@ class InfBatchFromSentenceList:
             max_length = max(max_length, len_input_ids)
             
             token_cnt = max_length * (1 + len(sentence_data))
-            if token_cnt > num_tokens:
+            if token_cnt > MAX_BATCH_TOKEN_NUM:
                 break
             batch_data.append((input_ids))
             sentence_data.append(sentence)

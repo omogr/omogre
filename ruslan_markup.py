@@ -12,7 +12,7 @@ args = parser.parse_args()
           
 acc = AccentuatorTranscriptor(data_path=args.data_path)
 
-def save_markup(src_markup_parts, sentence_list, fout_name):
+def save_markup(src_markup_parts: list, sentence_list: list, fout_name: str):
     assert len(src_markup_parts) == len(sentence_list)
 
     with open(fout_name, 'w', encoding='utf-8') as fout:
@@ -21,7 +21,7 @@ def save_markup(src_markup_parts, sentence_list, fout_name):
             print('|'.join(parts), file=fout)
 
 
-def process(dataset_name):
+def process(dataset_name: str):
     print('dataset', dataset_name)
     finp_name = 'natasha_ruslan_markup/%s.txt'%dataset_name
 

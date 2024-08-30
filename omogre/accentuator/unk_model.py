@@ -18,11 +18,11 @@ from .unk_reader import InfBatchFromSentenceList
 from .unk_vocab import UnkVocab
 
  
-def norm_word(tword):
+def norm_word(tword: str) -> str:
     return tword.casefold().replace('ё', 'е').replace(' ', '!')
 
 
-def check_ee(tword):
+def check_ee(tword: str) -> int:
     acc_pos = tword.find('ё')
     if acc_pos >= 0:
         return acc_pos
@@ -34,7 +34,7 @@ def check_ee(tword):
 
     
 class UnkModel:
-    def __init__(self, data_path, device_name=None):
+    def __init__(self, data_path: str, device_name: str = None):
         model_data_path = os.path.join(data_path, 'unk_model')
         
         if device_name is None:           
@@ -49,10 +49,10 @@ class UnkModel:
         self.model.to(self.device)
         self.error_counter = 0
 
-    def seed(self, seed_value):
-        random.seed(seed_value)
-        np.random.seed(seed_value)
-        torch.manual_seed(seed_value)
+    #def seed(self, seed_value: int):
+    #    random.seed(seed_value)
+    #    np.random.seed(seed_value)
+    #    torch.manual_seed(seed_value)
 
     def process_model_batch(self, input_ids, attention_mask, batch_text, all_res):
         with torch.no_grad():
@@ -80,7 +80,7 @@ class UnkModel:
                 ct = (word_text, max_pos)
                 all_res.append(ct)
     
-    def get_acc_pos(self, unk_word):
+    def get_acc_pos(self, unk_word:str) -> int:
         acc_pos = self.unk_vocab.get_acc_pos(unk_word)
         if acc_pos >= 0:
             return acc_pos

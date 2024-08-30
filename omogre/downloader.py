@@ -10,9 +10,10 @@ from tqdm import tqdm
 
 logger = logging.getLogger(__name__)
 
-def download_model(cache_dir, file_name='accentuator_transcriptor_tiny'):
-    model_url = "https://huggingface.co/omogr/omogre/resolve/main/%s.gz?download=true"%file_name
+def download_model(cache_dir: str, file_name: str):
+    model_url: str = "https://huggingface.co/omogr/omogre/resolve/main/%s.gz?download=true"%file_name
 
+    etag = None
     try:
         response = requests.head(model_url, allow_redirects=True)
         if response.status_code != 200:
@@ -59,7 +60,7 @@ def download_model(cache_dir, file_name='accentuator_transcriptor_tiny'):
     
 
 if __name__ == "__main__":
-    path = "omogre_data"
+    path: str = "omogre_data"
     if not os.path.exists(path):
         os.mkdir(path)
-    download_model(cache_dir=path)
+    download_model(cache_dir=path, file_name='accentuator_transcriptor_tiny')

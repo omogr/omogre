@@ -11,6 +11,8 @@ InfTokenSpan = collections.namedtuple("TokenSpan", ["word_tokens", "punct", "fir
 alphabet = '-абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ'
 vowels = 'аеёиоуыэюяАЕЁИОУЫЭЮЯ'
 
+MAX_SENTENCE_LEN = 510
+
 class AccentVocab:
     def __init__(self, data_path):
         vocab_file = os.path.join(data_path, 'wv_word_acc.pickle')
@@ -146,7 +148,7 @@ class AccentTokenizer:
                 punct_tokens = self.encode(tpunct_str)
                 all_ids.extend(punct_tokens)
                 
-        if len(all_ids) > 510: # 512
+        if len(all_ids) > MAX_SENTENCE_LEN:
             is_easy = True
 
         return all_ids, all_spans, is_easy
