@@ -14,7 +14,7 @@ pip install git+https://github.com/omogr/omogre.git
 
 * При помощи pip
 
-[Скачать](https://github.com/omogr/omogre/archive/refs/heads/main.zip) код с [гитхаба](https://github.com/omogr/omogre). Hаходясь в корневой директории проекта (в той, в которой находится `setup.py`), выполнить команду
+Скачать код с [гитхаба](https://github.com/omogr/omogre). Hаходясь в корневой директории проекта (в той, в которой находится `setup.py`), выполнить команду
 
 ```
 pip install -e .
@@ -22,7 +22,7 @@ pip install -e .
 
 * Вручную
 
-Если хочется предварительно оценить работоспособность пакета, то можно [скачать](https://github.com/omogr/omogre/archive/refs/heads/main.zip) код с [гитхаба](https://github.com/omogr/omogre), руками установить необходимые библиотеки, запустить скрипт `test.py`. Необходимые библиотеки это [Pytorch](https://pytorch.org/) и [Numpy](https://numpy.org/). Кроме того, для автоматического скачивания данных требуются [tqdm](https://tqdm.github.io/) и [requests](https://pypi.org/project/requests/).
+Если хочется предварительно оценить работоспособность пакета, то можно скачать код с [гитхаба](https://github.com/omogr/omogre), руками установить необходимые библиотеки, запустить скрипт `test.py`. Необходимые библиотеки это [Pytorch](https://pytorch.org/) и [Numpy](https://numpy.org/). Кроме того, для автоматического скачивания моделей требуются [tqdm](https://tqdm.github.io/) и [requests](https://pypi.org/project/requests/).
 
 ## Скачивание данных
 
@@ -57,7 +57,7 @@ print('transcriptor.accentuate', transcriptor.accentuate(sentence_list))
 Все параметры не являются обязательными. 
 
 ```
-class Transcriptor(data_path=None, download=True, device_name=None, punct='.,!?')
+class Transcriptor(data_path: str = None, download: bool = True, device_name: str = None, punct: str = '.,!?')
 ```
 
 `data_path` - директория, в которой должна находиться модель.
@@ -72,8 +72,8 @@ class Transcriptor(data_path=None, download=True, device_name=None, punct='.,!?'
 Входы класса `Transcriptor`:
 
 ```
-	accentuate(sentence_list)
-	transcribe(sentence_list)
+	accentuate(sentence_list: list) -> list
+	transcribe(sentence_list: list) -> list
 ```
 	
 В случае `accentuate` выполняется расcтановка ударений, в случае `transcribe` - транскрипция. Оба входа получают на вход список строк и возращают список строк. Строками могут быть предложения или не очень большие куски текста.
@@ -85,7 +85,7 @@ class Transcriptor(data_path=None, download=True, device_name=None, punct='.,!?'
 Все параметры инициализации класса не являются обязательными. Смысл параметров инициализации такой же, как у класса Transcriptor.
 
 ```
-class (data_path=None, download=True, device_name=None)
+class (data_path: str = None, download: bool = True, device_name: str = None)
 ```
 
 `data_path` - директория, в которой должна находиться модель.
@@ -97,7 +97,7 @@ class (data_path=None, download=True, device_name=None)
 Входы класса `Accentuator`:
 
 ```
-	accentuate(sentence_list)
+	accentuate(sentence_list: list) -> list
 ```
 
 ## Пример работы
