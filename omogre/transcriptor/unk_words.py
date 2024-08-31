@@ -237,8 +237,6 @@ class UnkWords:
             indx -= 1
 
         res.reverse()
-        
-        #print('transcribe', input_word_text, word_text, res)
 
         if len(res) > 3:
             # strip BOS_SYMBOL BOS_SYMBOL ... '<EOW>'            

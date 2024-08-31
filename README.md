@@ -44,23 +44,31 @@ pip install -e .
 ## Пример запуска (скрипт test.py)
 
 ```
-from omogre import AccentuatorTranscriptor
+from omogre import Accentuator, Transcriptor
 
 # данные будут скачаны в директорию 'omogre_data'
-accentuator_transcriptor = AccentuatorTranscriptor(data_path='omogre_data')
+transcriptor = Transcriptor(data_path='omogre_data')
 
-sentence_list = ['на двери висит замок.']
+accentuator = Accentuator(data_path='omogre_data')
 
-print(accentuator_transcriptor.accentuate(sentence_list))        
-print(accentuator_transcriptor.transcribe(sentence_list))
+sentence_list = ['стены замка']
+
+print('transcriptor()', transcriptor(sentence_list))
+print('accentuator()', accentuator(sentence_list))
+
+print('transcriptor.transcribe', transcriptor.transcribe(sentence_list))
+print('accentuator.accentuate', accentuator.accentuate(sentence_list))
+
+print('transcriptor.accentuate', transcriptor.accentuate(sentence_list))
+
 ```
-       
-## Параметры инициализации класса AccentuatorTranscriptor
+   
+## Параметры инициализации класса Transcriptor
 
 Все параметры не являются обязательными. 
 
 ```
-class AccentuatorTranscriptor(data_path=None, download=True, device_name=None, punct='.,!?')
+class Transcriptor(data_path=None, download=True, device_name=None, punct='.,!?')
 ```
 
 `data_path` - директория, в которой должна находиться модель.
@@ -72,7 +80,7 @@ class AccentuatorTranscriptor(data_path=None, download=True, device_name=None, p
 `download` - следует ли загружать модель из интернета, если она не найдена в директории `data_path`.
 
 	 
-Входы класса `AccentuatorTranscriptor`:
+Входы класса `Transcriptor`:
 
 ```
 	accentuate(sentence_list)
@@ -80,6 +88,28 @@ class AccentuatorTranscriptor(data_path=None, download=True, device_name=None, p
 ```
 	
 В случае `accentuate` выполняется расcтановка ударений, в случае `transcribe` - транскрипция. Оба входа получают на вход список строк и возращают список строк. Строками могут быть предложения или не очень большие куски текста.
+
+## Параметры инициализации класса Accentuator
+
+Расстановка ударений классом Accentuator ничем не отличается от расстановки ударений классом Transcriptor. Разница только в том, что Accentuator не загружает данные для транскрипции. Это позволяет уменьшить время инициализации класса и расход оперативной памяти.
+
+Все параметры инициализации класса не являются обязательными. Смысл параметров инициализации такой же, как у класса Transcriptor.
+
+```
+class (data_path=None, download=True, device_name=None)
+```
+
+`data_path` - директория, в которой должна находиться модель.
+
+`device_name` - параметр, определяющий использование GPU. Соответствует параметру инициализации класса [torch.device](https://pytorch.org/docs/stable/tensor_attributes.html#torch.device).	Допустимые значения - "cpu", "cuda", "cuda:0" и т.д. По умолчанию если torch видит GPU, то "cuda", иначе "cpu".
+
+`download` - следует ли загружать модель из интернета, если она не найдена в директории `data_path`.
+
+Входы класса `Accentuator`:
+
+```
+	accentuate(sentence_list)
+```
 
 ## Пример работы
 

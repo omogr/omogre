@@ -2,8 +2,8 @@
 
 import os
 import sys
-from .transcriptor import Transcriptor
-from .accentuator import Accentuator
+from .transcriptor import Transcriptor as TranscriptorImpl
+from .accentuator import Accentuator as AccentuatorImpl
 
 INITIAL_MODEL = 'accentuator_transcriptor_tiny'
 
@@ -22,13 +22,13 @@ def punctuation_filter(input_string: str, punct: str=None):
 
 def find_model(file_name: str = INITIAL_MODEL, cache_dir: str = None, download: bool = True, reload=False):    
     from pathlib import Path
+    
     if cache_dir is None:
         try:
             omogr_cache = Path(os.getenv('OMOGR_CACHE', Path.home() / '.omogr_data'))
         except (AttributeError, ImportError):
             omogr_cache = os.getenv('OMOGR_CACHE', os.path.join(os.path.expanduser("~"), '.omogr_data'))
 
-        print('data_path', omogr_cache)
         cache_dir = omogr_cache
 
     if sys.version_info[0] == 3 and isinstance(cache_dir, Path):
@@ -37,7 +37,6 @@ def find_model(file_name: str = INITIAL_MODEL, cache_dir: str = None, download: 
     if not cache_dir:
         raise EnvironmentError('Cannot find OMOGR_CACHE path')
         
-
     if os.path.exists(cache_dir):
         if os.path.isdir(cache_dir):
             etag_file_name = os.path.join(cache_dir, 'etag')
@@ -48,6 +47,8 @@ def find_model(file_name: str = INITIAL_MODEL, cache_dir: str = None, download: 
     if not download:
         raise EnvironmentError('Cannot find model data')
 
+    print('data_path', cache_dir, file=sys.stderr)
+        
     if not os.path.exists(cache_dir):
         os.makedirs(cache_dir)
         
@@ -58,17 +59,17 @@ def find_model(file_name: str = INITIAL_MODEL, cache_dir: str = None, download: 
     return download_model(cache_dir, file_name=file_name)
         
 
-class AccentuatorTranscriptor:
+class Transcriptor:
     def __init__(self, data_path: str = None, download: bool = True, device_name:str = None, punct:str = '.,!?'):        
         loaded_data_path = find_model(file_name=INITIAL_MODEL,
             cache_dir=data_path, download=download)
             
         self.punct = punct
         transcriptor_data_path = os.path.join(loaded_data_path, 'transcriptor/')
-        self.transcriptor = Transcriptor(data_path=transcriptor_data_path)
+        self.transcriptor = TranscriptorImpl(data_path=transcriptor_data_path)
         
         accentuator_data_path = os.path.join(loaded_data_path, 'accentuator/')
-        self.accentuator = Accentuator(data_path=accentuator_data_path, device_name=device_name)
+        self.accentuator = AccentuatorImpl(data_path=accentuator_data_path, device_name=device_name)
     
     def accentuate(self, text):
         return self.accentuator.accentuate(text)
@@ -86,4 +87,20 @@ class AccentuatorTranscriptor:
             transcribed_sentence_list.append(''.join(transcribed_sentence))
         return transcribed_sentence_list
 
+    def __call__(self, sentence_list: list) -> list:
+        return self.transcribe(sentence_list)
+
+
+class Accentuator:
+    def __init__(self, data_path: str = None, download: bool = True, device_name:str = None):        
+        loaded_data_path = find_model(file_name=INITIAL_MODEL,
+            cache_dir=data_path, download=download)
+                    
+        accentuator_data_path = os.path.join(loaded_data_path, 'accentuator/')
+        self.accentuator = AccentuatorImpl(data_path=accentuator_data_path, device_name=device_name)
     
+    def accentuate(self, text):
+        return self.accentuator.accentuate(text)
+        
+    def __call__(self, text):
+        return self.accentuate(text)

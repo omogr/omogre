@@ -1,6 +1,6 @@
 # coding=utf-8
 
-from omogre import AccentuatorTranscriptor, find_model
+from omogre import Transcriptor, find_model
 import time
 from argparse import ArgumentParser
 
@@ -10,7 +10,7 @@ parser.add_argument("--data_path", type=str, default=None, help="Omogre model di
 parser.add_argument("--head", type=int, default=None, help="Process only head of file")
 args = parser.parse_args()
           
-acc = AccentuatorTranscriptor(data_path=args.data_path)
+transcriptor = Transcriptor(data_path=args.data_path)
 
 def save_markup(src_markup_parts: list, sentence_list: list, fout_name: str):
     assert len(src_markup_parts) == len(sentence_list)
@@ -41,7 +41,7 @@ def process(dataset_name: str):
                     break
                 
     start = time.time()
-    output_sentences = acc.accentuate(sentence_list)
+    output_sentences = transcriptor.accentuate(sentence_list)
     dt = time.time() - start
     print('Accentuated', dataset_name, len(sentence_list), 'sentences, dtime %.1f s'%dt)
 
@@ -49,7 +49,7 @@ def process(dataset_name: str):
     save_markup(src_markup_parts, output_sentences, fout_name)
 
     start = time.time()
-    output_sentences = acc.transcribe(sentence_list)
+    output_sentences = transcriptor.transcribe(sentence_list)
     dt = time.time() - start
     print('Transcribed', dataset_name, len(sentence_list), 'sentences, dtime %.1f s'%dt)
 

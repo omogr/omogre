@@ -1,10 +1,17 @@
-from omogre import AccentuatorTranscriptor
+from omogre import Accentuator, Transcriptor
 
 # данные будут скачаны в директорию 'omogre_data'
-accentuator_transcriptor = AccentuatorTranscriptor(data_path='omogre_data')
 
-sentence_list = ['на двери висит замок.']
+transcriptor = Transcriptor(data_path='omogre_data')
 
-print('accentuate', accentuator_transcriptor.accentuate(sentence_list))
-   
-print('transcribe', accentuator_transcriptor.transcribe(sentence_list))
+accentuator = Accentuator(data_path='omogre_data')
+
+sentence_list = ['стены замка']
+
+print('transcriptor()', transcriptor(sentence_list))
+print('accentuator()', accentuator(sentence_list))
+
+print('transcriptor.transcribe', transcriptor.transcribe(sentence_list))
+print('accentuator.accentuate', accentuator.accentuate(sentence_list))
+
+print('transcriptor.accentuate', transcriptor.accentuate(sentence_list))
