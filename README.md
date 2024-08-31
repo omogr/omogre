@@ -2,7 +2,7 @@
 
 # Расстановка ударений и IPA транскрипция для русского языка
 
-Библиотека для python 3. Может использоваться либо для расстановки ударений в тексте, либо для его транскрипции.
+Библиотека для [Python 3](https://www.python.org/). Может использоваться либо для расстановки ударений в тексте, либо для его транскрипции.
 
 ## Способы установки
 
@@ -14,7 +14,7 @@ pip install git+https://github.com/omogr/omogre.git
 
 * При помощи pip
 
-Скачать код с [гитхаба](https://github.com/omogr/omogre). Hаходясь в корневой директории проекта (в той, в которой находится `setup.py`), выполнить команду
+[Скачать](https://github.com/omogr/omogre/archive/refs/heads/main.zip) код с [гитхаба](https://github.com/omogr/omogre). Hаходясь в корневой директории проекта (в той, в которой находится `setup.py`), выполнить команду
 
 ```
 pip install -e .
@@ -22,18 +22,7 @@ pip install -e .
 
 * Вручную
 
-Если хочется предварительно оценить работоспособность пакета, то можно скачать код с [гитхаба](https://github.com/omogr/omogre), руками установить необходимые библиотеки, запустить скрипт `test.py`.
-
-Для запуска библиотеки требуются следующее:
-* [Python 3](https://www.python.org/)
-
-Необходимые библиотеки:
-* [Pytorch](https://pytorch.org/)
-* [Numpy](https://numpy.org/)
-
-Кроме того, для автоматического скачивания данных требуются:
-* [tqdm](https://tqdm.github.io/)
-* [requests](https://pypi.org/project/requests/)
+Если хочется предварительно оценить работоспособность пакета, то можно [скачать](https://github.com/omogr/omogre/archive/refs/heads/main.zip) код с [гитхаба](https://github.com/omogr/omogre), руками установить необходимые библиотеки, запустить скрипт `test.py`. Необходимые библиотеки это [Pytorch](https://pytorch.org/) и [Numpy](https://numpy.org/). Кроме того, для автоматического скачивания данных требуются [tqdm](https://tqdm.github.io/) и [requests](https://pypi.org/project/requests/).
 
 ## Скачивание данных
 
