@@ -69,7 +69,10 @@ print('transcriptor.accentuate', transcriptor.accentuate(sentence_list))
 Все параметры инициализации класса не являются обязательными. 
 
 ```
-class Transcriptor(data_path: str = None, download: bool = True, device_name: str = None, punct: str = '.,!?')
+class Transcriptor(data_path: str = None,
+				   download: bool = True,
+		           device_name: str = None,
+		           punct: str = '.,!?')
 ```
 
 `data_path` - директория, в которой должна находиться модель.
@@ -97,7 +100,9 @@ class Transcriptor(data_path: str = None, download: bool = True, device_name: st
 Все параметры инициализации класса не являются обязательными. Смысл параметров инициализации такой же, как у класса Transcriptor.
 
 ```
-class Accentuator(data_path: str = None, download: bool = True, device_name: str = None)
+class Accentuator(data_path: str = None,
+		          download: bool = True,
+		          device_name: str = None)
 ```
 
 `data_path` - директория, в которой должна находиться модель.
