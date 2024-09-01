@@ -37,7 +37,7 @@ pip install -e .
 
 При желании можно указывать путь, данные будут скачаны в указанную директорию. Если в этой директории уже есть данные, то повторного скачивания данных не будет.
 
-Скрипт `download_data.py` также позволяет загружать данные. В качестве параметров запуска этого скрипта тоже можно указать директорию, в которую надо скачать данные.
+Скрипт `download_data.py` также позволяет загружать данные. В качестве параметра запуска этого скрипта тоже можно указать директорию, в которую надо скачать данные.
 
 
 ## Пример запуска
@@ -54,14 +54,14 @@ accentuator = Accentuator(data_path='omogre_data')
 
 sentence_list = ['стены замка']
 
-print('transcriptor()', transcriptor(sentence_list))
-print('accentuator()', accentuator(sentence_list))
+print('transcriptor', transcriptor(sentence_list))
+print('accentuator', accentuator(sentence_list))
 
+# длугие способы вызовов, отличаются только формой записи
 print('transcriptor.transcribe', transcriptor.transcribe(sentence_list))
 print('accentuator.accentuate', accentuator.accentuate(sentence_list))
 
 print('transcriptor.accentuate', transcriptor.accentuate(sentence_list))
-
 ```
 
 
@@ -79,9 +79,9 @@ class Transcriptor(data_path: str = None, download: bool = True, device_name: st
 
 `device_name` - параметр, определяющий использование GPU. Соответствует параметру инициализации класса [torch.device](https://pytorch.org/docs/stable/tensor_attributes.html#torch.device).	Допустимые значения - "cpu", "cuda", "cuda:0" и т.д. По умолчанию если torch видит GPU, то "cuda", иначе "cpu".
 
-`punct` - список небуквенных символов, которые переносятся из исходного текста в транскрипцию.
+`punct` - список небуквенных символов, которые переносятся из исходного текста в транскрипцию. По умолчанию '.,!?'.
 
-`download` - следует ли загружать модель из интернета, если она не найдена в директории `data_path`.
+`download` - следует ли загружать модель из интернета, если она не найдена в директории `data_path`. По умолчанию True.
 
 	 
 Входы класса `Transcriptor`:
@@ -100,14 +100,14 @@ class Transcriptor(data_path: str = None, download: bool = True, device_name: st
 Все параметры инициализации класса не являются обязательными. Смысл параметров инициализации такой же, как у класса Transcriptor.
 
 ```
-class (data_path: str = None, download: bool = True, device_name: str = None)
+class Accentuator(data_path: str = None, download: bool = True, device_name: str = None)
 ```
 
 `data_path` - директория, в которой должна находиться модель.
 
 `device_name` - параметр, определяющий использование GPU. Соответствует параметру инициализации класса [torch.device](https://pytorch.org/docs/stable/tensor_attributes.html#torch.device).	Допустимые значения - "cpu", "cuda", "cuda:0" и т.д. По умолчанию если torch видит GPU, то "cuda", иначе "cpu".
 
-`download` - следует ли загружать модель из интернета, если она не найдена в директории `data_path`.
+`download` - следует ли загружать модель из интернета, если она не найдена в директории `data_path`. По умолчанию True.
 
 Входы класса `Accentuator`:
 
@@ -135,7 +135,7 @@ markup-файлы этих корпусов уже содержат расста
 
 ### Транскрипция
 
-При транскрипции посторонние символы фильтруются (за исключением фиксированного списка символов, который можно задавать отдельным параметром). По умолчанию не фильтруются четыре знака пунктуации  (`.,!?`). Транскрипция определяется пословно, без учёта контекста. Для транскрипции слов используются следующие символы:
+При порождении транскрипции посторонние символы фильтруются. Список небуквенных символов, которые не фильтруются можно задавать отдельным параметром. По умолчанию не фильтруются четыре знака пунктуации  (`.,!?`). Транскрипция определяется пословно, без учёта контекста. Для транскрипции слов используются следующие символы:
 
 ```
 ʲ`ɪətrsɐnjvmapkɨʊleɫdizofʂɕbɡxːuʐæɵʉɛ
