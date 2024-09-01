@@ -1,5 +1,6 @@
 
 
+
 # Omogre
 
 ## Russian Accentuator and IPA Transcriptor
@@ -132,7 +133,10 @@ During transcription generation, extraneous characters are filtered out. Non-let
 ʲ`ɪətrsɐnjvmapkɨʊleɫdizofʂɕbɡxːuʐæɵʉɛ
 ```
 
-Feedback
-Email for questions, comments and suggestions - name@email.com.
+## Feedback
+Email for questions, comments and suggestions - `omogrus@ya.ru`.
 
-License
+## License
+[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)
+
+(translated by grok-2-2024-08-13)

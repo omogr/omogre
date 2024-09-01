@@ -1,3 +1,5 @@
+
+
 # Omogre
 
 ## Russian accentuation and IPA transcription library.
@@ -143,7 +145,10 @@ Extraneous symbols are filtered out when generating transcription. The list of n
 ʲ`ɪətrsɐnjvmapkɨʊleɫdizofʂɕbɡxːuʐæɵʉɛ
 ```
 
-Feedback
-Email for questions, comments and suggestions - name@email.com.
+## Feedback
+Email for questions, comments and suggestions - `omogrus@ya.ru`.
 
-License
+## License
+[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)
+
+(translated by gemini-1.5-flash-api-0514)
