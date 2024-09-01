@@ -39,7 +39,7 @@ You can specify a path where the model data should be stored. If data already ex
 
 ## Example Usage
 
-Script `test.py`.
+Script [`ruslan_markup.py`](https://github.com/omogr/omogre/blob/main/test.py).
 
 ```python
 from omogre import Accentuator, Transcriptor
@@ -111,13 +111,13 @@ accentuate(sentence_list: list) -> list
 
 ## Usage Example
 
-The script `ruslan_markup.py` places stresses and generates transcriptions for markup files of the acoustic corpora [ruslan](http://dataset.sova.ai/SOVA-TTS/ruslan/ruslan_dataset.tar) and [natasha](http://dataset.sova.ai/SOVA-TTS/natasha/natasha_dataset.tar).
+The script [`ruslan_markup.py`](https://github.com/omogr/omogre/blob/main/ruslan_markup.py) places stresses and generates transcriptions for markup files of the acoustic corpora [ruslan](http://dataset.sova.ai/SOVA-TTS/ruslan/ruslan_dataset.tar) and [natasha](http://dataset.sova.ai/SOVA-TTS/natasha/natasha_dataset.tar).
 
 These markup files already contain manually placed stresses, which were [done manually](https://habr.com/ru/companies/ashmanov_net/articles/528296/).
 
-The script `ruslan_markup.py` generates its own stress placement for these files, allowing for an evaluation of the accuracy of stress placement.
+The script [`ruslan_markup.py`](https://github.com/omogr/omogre/blob/main/ruslan_markup.py) generates its own stress placement for these files, allowing for an evaluation of the accuracy of stress placement.
 
-## Context Consideration and Other Features
+## Context Awareness and Other Features
 
 ### Stresses
 
