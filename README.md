@@ -70,9 +70,9 @@ print('transcriptor.accentuate', transcriptor.accentuate(sentence_list))
 
 ```
 class Transcriptor(data_path: str = None,
-				   download: bool = True,
-		           device_name: str = None,
-		           punct: str = '.,!?')
+                   download: bool = True,
+                   device_name: str = None,
+                   punct: str = '.,!?')
 ```
 
 `data_path` - директория, в которой должна находиться модель.
@@ -101,8 +101,8 @@ class Transcriptor(data_path: str = None,
 
 ```
 class Accentuator(data_path: str = None,
-		          download: bool = True,
-		          device_name: str = None)
+                  download: bool = True,
+                  device_name: str = None)
 ```
 
 `data_path` - директория, в которой должна находиться модель.
