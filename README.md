@@ -1,11 +1,11 @@
 # Omogre
 
-### Russian accentuator and IPA transcriptor.
+## Russian accentuator and IPA transcriptor.
 
 Библиотека для [Python 3](https://www.python.org/). Автоматическая расстановка ударений и IPA транскрипция для русского языка.
 
 
-### Зависимости
+## Зависимости
 
 Установка библиотеки повлечет за собой установку [Pytorch](https://pytorch.org/) и [Numpy](https://numpy.org/). Кроме того, для скачивания моделей  установятся [tqdm](https://tqdm.github.io/) и [requests](https://pypi.org/project/requests/).
 
