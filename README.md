@@ -1,28 +1,31 @@
-# Russian accentuator and IPA transcriptor
+# Omogre
 
-# Расстановка ударений и IPA транскрипция для русского языка
+### Russian accentuator and IPA transcriptor.
 
-Библиотека для [Python 3](https://www.python.org/). Может использоваться либо для расстановки ударений в тексте, либо для его транскрипции.
+Библиотека для [Python 3](https://www.python.org/). Автоматическая расстановка ударений и IPA транскрипция для русского языка.
 
-## Способы установки
+### Зависимости
 
-* С помощью GIT
+Установка библиотеки повлечет за собой установку [Pytorch](https://pytorch.org/) и [Numpy](https://numpy.org/). Кроме того, для скачивания моделей  установятся [tqdm](https://tqdm.github.io/) и [requests](https://pypi.org/project/requests/).
+
+## Установка
+#### С помощью GIT
 
 ```
 pip install git+https://github.com/omogr/omogre.git
 ```
 
-* При помощи pip
+### При помощи pip
 
-Скачать код с [гитхаба](https://github.com/omogr/omogre). Hаходясь в корневой директории проекта (в той, в которой находится `setup.py`), выполнить команду
+Скачать код с [гитхаба](https://github.com/omogr/omogre). В директории, где находится setup.py, выполнить
 
 ```
 pip install -e .
 ```
 
-* Вручную
+### Вручную
 
-Если хочется предварительно оценить работоспособность пакета, то можно скачать код с [гитхаба](https://github.com/omogr/omogre), руками установить необходимые библиотеки, запустить скрипт `test.py`. Необходимые библиотеки это [Pytorch](https://pytorch.org/) и [Numpy](https://numpy.org/). Кроме того, для автоматического скачивания моделей требуются [tqdm](https://tqdm.github.io/) и [requests](https://pypi.org/project/requests/).
+Скачать код с [гитхаба](https://github.com/omogr/omogre). Установить [Pytorch](https://pytorch.org/), [Numpy](https://numpy.org/), [tqdm](https://tqdm.github.io/) и [requests](https://pypi.org/project/requests/). Запустить test.py.
 
 ## Скачивание данных
 
@@ -30,7 +33,11 @@ pip install -e .
 
 При желании можно указывать путь, данные будут скачаны в указанную директорию. Если в этой директории уже есть данные, то повторного скачивания данных не будет.
 
-## Пример запуска (скрипт test.py)
+Скрипт `download_data.py` также позволяет загружать данные. В качестве параметров запуска этого скрипта тоже можно указать директорию, в которую надо скачать данные.
+
+## Пример запуска
+
+Скрипт test.py.
 
 ```
 from omogre import Accentuator, Transcriptor
@@ -52,9 +59,9 @@ print('transcriptor.accentuate', transcriptor.accentuate(sentence_list))
 
 ```
    
-## Параметры инициализации класса Transcriptor
+## Класс Transcriptor
 
-Все параметры не являются обязательными. 
+Все параметры инициализации класса не являются обязательными. 
 
 ```
 class Transcriptor(data_path: str = None, download: bool = True, device_name: str = None, punct: str = '.,!?')
@@ -78,7 +85,7 @@ class Transcriptor(data_path: str = None, download: bool = True, device_name: st
 	
 В случае `accentuate` выполняется расcтановка ударений, в случае `transcribe` - транскрипция. Оба входа получают на вход список строк и возращают список строк. Строками могут быть предложения или не очень большие куски текста.
 
-## Параметры инициализации класса Accentuator
+## Класс Accentuator
 
 Расстановка ударений классом Accentuator ничем не отличается от расстановки ударений классом Transcriptor. Разница только в том, что Accentuator не загружает данные для транскрипции. Это позволяет уменьшить время инициализации класса и расход оперативной памяти.
 
@@ -125,10 +132,6 @@ markup-файлы этих корпусов уже содержат расста
 ```
 ʲ`ɪətrsɐnjvmapkɨʊleɫdizofʂɕbɡxːuʐæɵʉɛ
 ```
-
-## Скрипт `download_data.py`
-
-Этот скрипт позволяет загружать данные без запуска Accentuator или Transcriptor. В качестве параметров запуска этого скрипта можно указать директорию, в которую надо скачать данные.
 
 ## Обратная связь
 
