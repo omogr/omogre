@@ -10,7 +10,7 @@
 
 ## Зависимости
 
-Установка библиотеки повлечет за собой установку [Pytorch](https://pytorch.org/) и [Numpy](https://numpy.org/). Кроме того, для скачивания моделей  установятся [tqdm](https://tqdm.github.io/) и [requests](https://pypi.org/project/requests/).
+Установка библиотеки повлечет за собой установку [`Pytorch`](https://pytorch.org/) и [`Numpy`](https://numpy.org/). Кроме того, для скачивания моделей  установятся [`tqdm`](https://tqdm.github.io/) и [`requests`](https://pypi.org/project/requests/).
 
 ## Установка
 
@@ -22,7 +22,7 @@ pip install git+https://github.com/omogr/omogre.git
 
 ### При помощи pip
 
-Скачать код с [гитхаба](https://github.com/omogr/omogre). В директории, в которой находится файл [setup.py](https://github.com/omogr/omogre/blob/main/setup.py), выполнить
+Скачать код с [гитхаба](https://github.com/omogr/omogre). В директории, в которой находится файл [`setup.py`](https://github.com/omogr/omogre/blob/main/setup.py), выполнить
 
 ```bash
 pip install -e .
@@ -30,7 +30,7 @@ pip install -e .
 
 ### Вручную
 
-Скачать код с [гитхаба](https://github.com/omogr/omogre). Установить [Pytorch](https://pytorch.org/), [Numpy](https://numpy.org/), [tqdm](https://tqdm.github.io/) и [requests](https://pypi.org/project/requests/). Запустить [test.py](https://github.com/omogr/omogre/blob/main/test.py).
+Скачать код с [гитхаба](https://github.com/omogr/omogre). Установить [`Pytorch`](https://pytorch.org/), [`Numpy`](https://numpy.org/), [`tqdm`](https://tqdm.github.io/) и [`requests`](https://pypi.org/project/requests/). Запустить [`test.py`](https://github.com/omogr/omogre/blob/main/test.py).
 
 ## Загрузка моделей
 
@@ -40,7 +40,7 @@ pip install -e .
 
 ## Пример запуска
 
-Скрипт [test.py](https://github.com/omogr/omogre/blob/main/test.py).
+Скрипт [`test.py`](https://github.com/omogr/omogre/blob/main/test.py).
 
 ```python
 from omogre import Accentuator, Transcriptor
@@ -76,7 +76,7 @@ class Transcriptor(data_path: str = None,
 
 - `data_path` - директория, в которой должна находиться модель.
 
-- `device_name` - параметр, определяющий использование GPU. Соответствует параметру инициализации класса [torch.device](https://pytorch.org/docs/stable/tensor_attributes.html#torch.device).	Допустимые значения - `"cpu"`, `"cuda"`, `"cuda:0"` и т.д. По умолчанию если torch видит GPU, то `"cuda"`, иначе `"cpu"`.
+- `device_name` - параметр, определяющий использование GPU. Соответствует параметру инициализации класса [`torch.device`](https://pytorch.org/docs/stable/tensor_attributes.html#torch.device).	Допустимые значения - `"cpu"`, `"cuda"`, `"cuda:0"` и т.д. По умолчанию если torch видит GPU, то `"cuda"`, иначе `"cpu"`.
 
 - `punct` - список небуквенных символов, которые переносятся из исходного текста в транскрипцию. По умолчанию `'.,!?'`.
 
@@ -106,7 +106,7 @@ class Accentuator(data_path: str = None,
 
 - `data_path` - директория, в которой должна находиться модель.
 
-- `device_name` - параметр, определяющий использование GPU. Соответствует параметру инициализации класса [torch.device](https://pytorch.org/docs/stable/tensor_attributes.html#torch.device).	Допустимые значения - `"cpu"`, `"cuda"`, `"cuda:0"` и т.д. По умолчанию если torch видит GPU, то `"cuda"`, иначе `"cpu"`.
+- `device_name` - параметр, определяющий использование GPU. Соответствует параметру инициализации класса [`torch.device`](https://pytorch.org/docs/stable/tensor_attributes.html#torch.device).	Допустимые значения - `"cpu"`, `"cuda"`, `"cuda:0"` и т.д. По умолчанию если torch видит GPU, то `"cuda"`, иначе `"cpu"`.
 
 - `download` - следует ли загружать модель из интернета, если она не найдена в директории `data_path`. По умолчанию `True`.
 
