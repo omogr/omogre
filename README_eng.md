@@ -33,11 +33,11 @@ Download the code from [GitHub](https://github.com/omogr/omogre). Install [Pytor
 
 ## Data Download
 
-By default, if no path is specified, data for models will be downloaded on the first run of the library. The script [`download_data.py`](https://github.com/omogr/omogre/blob/main/download_data.py) can also be used to download this data.
+By default, data for models will be downloaded on the first run of the library. The script [`download_data.py`](https://github.com/omogr/omogre/blob/main/download_data.py) can also be used to download this data.
 
 You can specify a path where the model data should be stored. If data already exists in this directory, it won't be downloaded again.
 
-## Example Usage
+## Example
 
 Script [`ruslan_markup.py`](https://github.com/omogr/omogre/blob/main/test.py).
 
@@ -78,7 +78,7 @@ class Transcriptor(data_path: str = None,
 - `punct`: List of non-letter characters to be carried over from the source text to the transcription. Default is `'.,!?'`.
 - `download`: Whether to download the model from the internet if not found in `data_path`. Default is `True`.
 
-Class inputs:
+Class methods:
 
 ```python
 accentuate(sentence_list: list) -> list
@@ -103,7 +103,7 @@ class Accentuator(data_path: str = None,
 - `device_name`: Parameter for GPU usage. See above for details.
 - `download`: Whether to download the model if not found. Default is `True`.
 
-Class input:
+Class method:
 
 ```python
 accentuate(sentence_list: list) -> list
