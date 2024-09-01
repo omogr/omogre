@@ -4,7 +4,9 @@
 
 [English README](https://github.com/omogr/omogre/blob/main/README_eng.md)
 
-Библиотека для [Python 3](https://www.python.org/). Автоматическая расстановка ударений и [IPA транскрипция](https://ru.wikipedia.org/wiki/%D0%9C%D0%B5%D0%B6%D0%B4%D1%83%D0%BD%D0%B0%D1%80%D0%BE%D0%B4%D0%BD%D1%8B%D0%B9_%D1%84%D0%BE%D0%BD%D0%B5%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9_%D0%B0%D0%BB%D1%84%D0%B0%D0%B2%D0%B8%D1%82) для русского языка.
+## Автоматическая расстановка ударений и [IPA транскрипция](https://ru.wikipedia.org/wiki/%D0%9C%D0%B5%D0%B6%D0%B4%D1%83%D0%BD%D0%B0%D1%80%D0%BE%D0%B4%D0%BD%D1%8B%D0%B9_%D1%84%D0%BE%D0%BD%D0%B5%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9_%D0%B0%D0%BB%D1%84%D0%B0%D0%B2%D0%B8%D1%82) для русского языка.
+
+Библиотека для [Python 3](https://www.python.org/). 
 
 ## Зависимости
 
@@ -20,7 +22,7 @@ pip install git+https://github.com/omogr/omogre.git
 
 ### При помощи pip
 
-Скачать код с [гитхаба](https://github.com/omogr/omogre). В директории, в которой находится файл `setup.py`, выполнить
+Скачать код с [гитхаба](https://github.com/omogr/omogre). В директории, в которой находится файл [setup.py](https://github.com/omogr/omogre/blob/main/setup.py), выполнить
 
 ```bash
 pip install -e .
@@ -28,11 +30,11 @@ pip install -e .
 
 ### Вручную
 
-Скачать код с [гитхаба](https://github.com/omogr/omogre). Установить [Pytorch](https://pytorch.org/), [Numpy](https://numpy.org/), [tqdm](https://tqdm.github.io/) и [requests](https://pypi.org/project/requests/). Запустить test.py.
+Скачать код с [гитхаба](https://github.com/omogr/omogre). Установить [Pytorch](https://pytorch.org/), [Numpy](https://numpy.org/), [tqdm](https://tqdm.github.io/) и [requests](https://pypi.org/project/requests/). Запустить [test.py](https://github.com/omogr/omogre/blob/main/test.py).
 
 ## Скачивание данных
 
-По умолчанию, если не указывать путь, то при первом запуске библиотеки скачиваются данные для моделей. Скрипт `download_data.py` также позволяет загружать эти данные.
+По умолчанию, если не указывать путь, то при первом запуске библиотеки скачиваются данные для моделей. Скрипт [`download_data.py`](https://github.com/omogr/omogre/blob/main/download_data.py) также позволяет загружать эти данные.
 
 При желании можно указывать путь, в котором должны располагаться данные для моделей. Если в этой директории уже есть данные, то их повторного скачивания не будет.
 

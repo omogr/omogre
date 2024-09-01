@@ -29,11 +29,11 @@ pip install -e .
 
 ### Manually
 
-Download the code from [GitHub](https://github.com/omogr/omogre). Install [Pytorch](https://pytorch.org/), [Numpy](https://numpy.org/), [tqdm](https://tqdm.github.io/), and [requests](https://pypi.org/project/requests/). Run `test.py`.
+Download the code from [GitHub](https://github.com/omogr/omogre). Install [Pytorch](https://pytorch.org/), [Numpy](https://numpy.org/), [tqdm](https://tqdm.github.io/), and [requests](https://pypi.org/project/requests/). Run [test.py](https://github.com/omogr/omogre/blob/main/test.py).
 
 ## Data Download
 
-By default, if no path is specified, data for models will be downloaded on the first run of the library. The script `download_data.py` can also be used to download this data.
+By default, if no path is specified, data for models will be downloaded on the first run of the library. The script [`download_data.py`](https://github.com/omogr/omogre/blob/main/download_data.py) can also be used to download this data.
 
 You can specify a path where the model data should be stored. If data already exists in this directory, it won't be downloaded again.
 
