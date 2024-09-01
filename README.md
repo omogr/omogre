@@ -4,17 +4,15 @@
 
 Библиотека для [Python 3](https://www.python.org/). Автоматическая расстановка ударений и [IPA транскрипция](https://ru.wikipedia.org/wiki/%D0%9C%D0%B5%D0%B6%D0%B4%D1%83%D0%BD%D0%B0%D1%80%D0%BE%D0%B4%D0%BD%D1%8B%D0%B9_%D1%84%D0%BE%D0%BD%D0%B5%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9_%D0%B0%D0%BB%D1%84%D0%B0%D0%B2%D0%B8%D1%82) для русского языка.
 
-
 ## Зависимости
 
 Установка библиотеки повлечет за собой установку [Pytorch](https://pytorch.org/) и [Numpy](https://numpy.org/). Кроме того, для скачивания моделей  установятся [tqdm](https://tqdm.github.io/) и [requests](https://pypi.org/project/requests/).
-
 
 ## Установка
 
 ### С помощью GIT
 
-```
+```bash
 pip install git+https://github.com/omogr/omogre.git
 ```
 
@@ -22,7 +20,7 @@ pip install git+https://github.com/omogr/omogre.git
 
 Скачать код с [гитхаба](https://github.com/omogr/omogre). В директории, в которой находится файл `setup.py`, выполнить
 
-```
+```bash
 pip install -e .
 ```
 
@@ -30,19 +28,17 @@ pip install -e .
 
 Скачать код с [гитхаба](https://github.com/omogr/omogre). Установить [Pytorch](https://pytorch.org/), [Numpy](https://numpy.org/), [tqdm](https://tqdm.github.io/) и [requests](https://pypi.org/project/requests/). Запустить test.py.
 
-
 ## Скачивание данных
 
 По умолчанию, если не указывать путь, то при первом запуске библиотеки скачиваются данные для моделей. Скрипт `download_data.py` также позволяет загружать эти данные.
 
 При желании можно указывать путь, в котором должны располагаться данные для моделей. Если в этой директории уже есть данные, то их повторного скачивания не будет.
 
-
 ## Пример запуска
 
 Скрипт test.py.
 
-```
+```python
 from omogre import Accentuator, Transcriptor
 
 # данные будут скачаны в директорию 'omogre_data'
@@ -61,32 +57,31 @@ print('accentuator.accentuate', accentuator.accentuate(sentence_list))
 print('transcriptor.accentuate', transcriptor.accentuate(sentence_list))
 ```
 
-
 ## Параметры классов
 
 ### Transcriptor
 
 Все параметры инициализации класса не являются обязательными. 
 
-```
+```python
 class Transcriptor(data_path: str = None,
                    download: bool = True,
                    device_name: str = None,
                    punct: str = '.,!?')
 ```
 
-`data_path` - директория, в которой должна находиться модель.
+- `data_path` - директория, в которой должна находиться модель.
 
-`device_name` - параметр, определяющий использование GPU. Соответствует параметру инициализации класса [torch.device](https://pytorch.org/docs/stable/tensor_attributes.html#torch.device).	Допустимые значения - `"cpu"`, `"cuda"`, `"cuda:0"` и т.д. По умолчанию если torch видит GPU, то `"cuda"`, иначе `"cpu"`.
+- `device_name` - параметр, определяющий использование GPU. Соответствует параметру инициализации класса [torch.device](https://pytorch.org/docs/stable/tensor_attributes.html#torch.device).	Допустимые значения - `"cpu"`, `"cuda"`, `"cuda:0"` и т.д. По умолчанию если torch видит GPU, то `"cuda"`, иначе `"cpu"`.
 
-`punct` - список небуквенных символов, которые переносятся из исходного текста в транскрипцию. По умолчанию `'.,!?'`.
+- `punct` - список небуквенных символов, которые переносятся из исходного текста в транскрипцию. По умолчанию `'.,!?'`.
 
-`download` - следует ли загружать модель из интернета, если она не найдена в директории `data_path`. По умолчанию `True`.
+- `download` - следует ли загружать модель из интернета, если она не найдена в директории `data_path`. По умолчанию `True`.
 
 	 
 Входы класса `Transcriptor`:
 
-```
+```python
 	accentuate(sentence_list: list) -> list
 	transcribe(sentence_list: list) -> list
 ```
@@ -99,24 +94,23 @@ class Transcriptor(data_path: str = None,
 
 Все параметры инициализации класса не являются обязательными. Смысл параметров инициализации такой же, как у класса Transcriptor.
 
-```
+```python
 class Accentuator(data_path: str = None,
                   download: bool = True,
                   device_name: str = None)
 ```
 
-`data_path` - директория, в которой должна находиться модель.
+- `data_path` - директория, в которой должна находиться модель.
 
-`device_name` - параметр, определяющий использование GPU. Соответствует параметру инициализации класса [torch.device](https://pytorch.org/docs/stable/tensor_attributes.html#torch.device).	Допустимые значения - `"cpu"`, `"cuda"`, `"cuda:0"` и т.д. По умолчанию если torch видит GPU, то `"cuda"`, иначе `"cpu"`.
+- `device_name` - параметр, определяющий использование GPU. Соответствует параметру инициализации класса [torch.device](https://pytorch.org/docs/stable/tensor_attributes.html#torch.device).	Допустимые значения - `"cpu"`, `"cuda"`, `"cuda:0"` и т.д. По умолчанию если torch видит GPU, то `"cuda"`, иначе `"cpu"`.
 
-`download` - следует ли загружать модель из интернета, если она не найдена в директории `data_path`. По умолчанию `True`.
+- `download` - следует ли загружать модель из интернета, если она не найдена в директории `data_path`. По умолчанию `True`.
 
 Входы класса `Accentuator`:
 
-```
+```python
 	accentuate(sentence_list: list) -> list
 ```
-
 
 ## Пример работы
 
@@ -125,7 +119,6 @@ class Accentuator(data_path: str = None,
 markup-файлы этих корпусов уже содержат расстановку ударений, которая [была сделана](https://habr.com/ru/companies/ashmanov_net/articles/528296/) вручную. 
 
 Скрипт `ruslan_markup.py` порождает для тех же файлов свою собственную расстановку ударений. Изначальная ручная разметка никак не используется при тестировании и не использовалась при обучении. Таким образом, её можно использовать для оценки точности расстановки ударений.
-
 
 ## Учёт контекста и некоторые другие особенности
 
@@ -143,13 +136,10 @@ markup-файлы этих корпусов уже содержат расста
 ʲ`ɪətrsɐnjvmapkɨʊleɫdizofʂɕbɡxːuʐæɵʉɛ
 ```
 
-
 ## Обратная связь
 
 Почта для вопросов, замечаний и предложений - `omogrus@ya.ru`.
 
-
 ## Лицензия
 
 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ru)
-

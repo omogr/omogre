@@ -16,7 +16,7 @@ Installing the library will entail installing [Pytorch](https://pytorch.org/) an
 
 ### Using GIT
 
-```
+```bash
 pip install git+https://github.com/omogr/omogre.git
 ```
 
@@ -24,7 +24,7 @@ pip install git+https://github.com/omogr/omogre.git
 
 Download the code from [github](https://github.com/omogr/omogre). In the directory containing the `setup.py` file, run
 
-```
+```bash
 pip install -e .
 ```
 
@@ -44,7 +44,7 @@ You can optionally specify the path where the model data should be located. If t
 
 The test.py script.
 
-```
+```python
 from omogre import Accentuator, Transcriptor
 
 # the data will be downloaded to the 'omogre_data' directory
@@ -70,7 +70,7 @@ print('transcriptor.accentuate', transcriptor.accentuate(sentence_list))
 
 All class initialization parameters are optional.
 
-```
+```python
 class Transcriptor(data_path: str = None,
                    download: bool = True,
                    device_name: str = None,
@@ -88,7 +88,7 @@ class Transcriptor(data_path: str = None,
          
 Inputs of the `Transcriptor` class:
 
-```
+```python
         accentuate(sentence_list: list) -> list
         transcribe(sentence_list: list) -> list
 ```
@@ -101,7 +101,7 @@ Stress placement by the Accentuator class is no different from stress placement 
 
 All class initialization parameters are optional. The meaning of the initialization parameters is the same as for the Transcriptor class.
 
-```
+```python
 class Accentuator(data_path: str = None,
                   download: bool = True,
                   device_name: str = None)
@@ -115,7 +115,7 @@ class Accentuator(data_path: str = None,
 
 Inputs of the `Accentuator` class:
 
-```
+```python
         accentuate(sentence_list: list) -> list
 ```
 
