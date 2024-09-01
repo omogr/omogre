@@ -5,7 +5,7 @@
 
 ## Russian Accentuator and IPA Transcriptor
 
-A library for [Python 3](https://www.python.org/). Automatic stress placement and [IPA transcription](https://en.wikipedia.org/wiki/International_Phonetic_Alphabet) for the Russian language.
+A library for [`Python 3`](https://www.python.org/). Automatic stress placement and [IPA transcription](https://en.wikipedia.org/wiki/International_Phonetic_Alphabet) for the Russian language.
 
 ## Dependencies
 
@@ -111,7 +111,7 @@ accentuate(sentence_list: list) -> list
 
 ## Usage Example
 
-The script [`ruslan_markup.py`](https://github.com/omogr/omogre/blob/main/ruslan_markup.py) places stresses and generates transcriptions for markup files of the acoustic corpora [ruslan](http://dataset.sova.ai/SOVA-TTS/ruslan/ruslan_dataset.tar) and [natasha](http://dataset.sova.ai/SOVA-TTS/natasha/natasha_dataset.tar).
+The script [`ruslan_markup.py`](https://github.com/omogr/omogre/blob/main/ruslan_markup.py) places stresses and generates transcriptions for markup files of the acoustic corpora [`ruslan`](http://dataset.sova.ai/SOVA-TTS/ruslan/ruslan_dataset.tar) and [`natasha`](http://dataset.sova.ai/SOVA-TTS/natasha/natasha_dataset.tar).
 
 These markup files already contain manually placed stresses, which were [done manually](https://habr.com/ru/companies/ashmanov_net/articles/528296/).
 
