@@ -31,7 +31,7 @@ pip install -e .
 
 Download the code from [GitHub](https://github.com/omogr/omogre). Install [Pytorch](https://pytorch.org/), [Numpy](https://numpy.org/), [tqdm](https://tqdm.github.io/), and [requests](https://pypi.org/project/requests/). Run [test.py](https://github.com/omogr/omogre/blob/main/test.py).
 
-## Data Download
+## Loading of models
 
 By default, data for models will be downloaded on the first run of the library. The script [`download_data.py`](https://github.com/omogr/omogre/blob/main/download_data.py) can also be used to download this data.
 

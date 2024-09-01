@@ -32,7 +32,7 @@ pip install -e .
 
 Скачать код с [гитхаба](https://github.com/omogr/omogre). Установить [Pytorch](https://pytorch.org/), [Numpy](https://numpy.org/), [tqdm](https://tqdm.github.io/) и [requests](https://pypi.org/project/requests/). Запустить [test.py](https://github.com/omogr/omogre/blob/main/test.py).
 
-## Скачивание данных
+## Загрузка моделей
 
 По умолчанию при первом запуске библиотеки скачиваются данные для моделей. Скрипт [`download_data.py`](https://github.com/omogr/omogre/blob/main/download_data.py) также позволяет загружать эти данные.
 
