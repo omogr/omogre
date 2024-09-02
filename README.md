@@ -116,7 +116,9 @@ class Accentuator(data_path: str = None,
 	accentuate(sentence_list: list) -> list
 ```
 
-## Пример работы
+## Примеры работы
+
+### markup-файлы для акустических корпусов
 
 Скрипт [`ruslan_markup.py`](https://github.com/omogr/omogre/blob/main/ruslan_markup.py) расставляет ударения и порождает транскрипцию для markup-файлов акустических корпусов [`RUSLAN`](http://dataset.sova.ai/SOVA-TTS/ruslan/ruslan_dataset.tar) и [`NATASHA`](http://dataset.sova.ai/SOVA-TTS/natasha/natasha_dataset.tar).
 
@@ -124,10 +126,10 @@ markup-файлы этих корпусов уже содержат расста
 
 Скрипт [`ruslan_markup.py`](https://github.com/omogr/omogre/blob/main/ruslan_markup.py) порождает для тех же файлов свою собственную расстановку ударений. Изначальная ручная разметка никак не используется при тестировании и не использовалась при обучении. Таким образом, её можно использовать для оценки точности расстановки ударений.
 
-## Синтез речи
+### Синтез речи
 
 Расстановка ударений и транскрипция могут быть полезны при синтезе речи. [Ноутбук](https://github.com/omogr/omogre/blob/main/XTTS_ru_ipa.ipynb) содержит пример запуска [XTTS](https://github.com/coqui-ai/TTS) модели, обученной на транскрипции для русского языка. Модель обучалась на корпусах [`RUSLAN`](http://dataset.sova.ai/SOVA-TTS/ruslan/ruslan_dataset.tar) и [Common Voice](https://commonvoice.mozilla.org/ru).
-Модель можно скачать с [Hugging Face](https://huggingface.co/omogr/XTTS-ru-ipa)
+Веса модели можно скачать с [Hugging Face](https://huggingface.co/omogr/XTTS-ru-ipa)
 
 ## Учёт контекста и некоторые другие особенности
 
