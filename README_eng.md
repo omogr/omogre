@@ -39,7 +39,7 @@ You can specify a path where the model data should be stored. If data already ex
 
 ## Example
 
-Script [`ruslan_markup.py`](https://github.com/omogr/omogre/blob/main/test.py).
+Script [`test.py`](https://github.com/omogr/omogre/blob/main/test.py).
 
 ```python
 from omogre import Accentuator, Transcriptor

@@ -4,7 +4,7 @@
 
 [English README](https://github.com/omogr/omogre/blob/main/README_eng.md)
 
-## Автоматическая расстановка ударений и [IPA транскрипция](https://ru.wikipedia.org/wiki/%D0%9C%D0%B5%D0%B6%D0%B4%D1%83%D0%BD%D0%B0%D1%80%D0%BE%D0%B4%D0%BD%D1%8B%D0%B9_%D1%84%D0%BE%D0%BD%D0%B5%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9_%D0%B0%D0%BB%D1%84%D0%B0%D0%B2%D0%B8%D1%82) для русского языка.
+## Автоматическая расстановка ударений и [IPA](https://ru.wikipedia.org/wiki/%D0%9C%D0%B5%D0%B6%D0%B4%D1%83%D0%BD%D0%B0%D1%80%D0%BE%D0%B4%D0%BD%D1%8B%D0%B9_%D1%84%D0%BE%D0%BD%D0%B5%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9_%D0%B0%D0%BB%D1%84%D0%B0%D0%B2%D0%B8%D1%82) транскрипция для русского языка.
 
 Библиотека для [`Python 3`](https://www.python.org/). 
 
@@ -123,6 +123,10 @@ class Accentuator(data_path: str = None,
 markup-файлы этих корпусов уже содержат расстановку ударений, которая [была сделана](https://habr.com/ru/companies/ashmanov_net/articles/528296/) вручную. 
 
 Скрипт [`ruslan_markup.py`](https://github.com/omogr/omogre/blob/main/ruslan_markup.py) порождает для тех же файлов свою собственную расстановку ударений. Изначальная ручная разметка никак не используется при тестировании и не использовалась при обучении. Таким образом, её можно использовать для оценки точности расстановки ударений.
+
+## Синтез речи
+
+Расстановка ударений и транскрипция могут быть полезны при синтезе речи. [Ноутбук](https://github.com/omogr/omogre/blob/main/XTTS_ru_ipa.ipynb) содержит пример запуска XTTS модели, обученной на транскрипции для русского языка. XTTS-модель обучалась на корпусах [`ruslan`](http://dataset.sova.ai/SOVA-TTS/ruslan/ruslan_dataset.tar) и [Common Voice](https://commonvoice.mozilla.org/ru).
 
 ## Учёт контекста и некоторые другие особенности
 
