@@ -120,7 +120,7 @@ class Accentuator(data_path: str = None,
 
 ### markup-файлы для акустических корпусов
 
-Скрипт [`ruslan_markup.py`](https://github.com/omogr/omogre/blob/main/ruslan_markup.py) расставляет ударения и порождает транскрипцию для markup-файлов акустических корпусов [`RUSLAN`](http://dataset.sova.ai/SOVA-TTS/ruslan/ruslan_dataset.tar) и [`NATASHA`](http://dataset.sova.ai/SOVA-TTS/natasha/natasha_dataset.tar).
+Скрипт [`ruslan_markup.py`](https://github.com/omogr/omogre/blob/main/ruslan_markup.py) расставляет ударения и порождает транскрипцию для markup-файлов акустических корпусов [`RUSLAN`](https://ruslan-corpus.github.io/) ([`RUSLAN с ручной разметкой ударений`](http://dataset.sova.ai/SOVA-TTS/ruslan/ruslan_dataset.tar)) и [`NATASHA`](http://dataset.sova.ai/SOVA-TTS/natasha/natasha_dataset.tar).
 
 markup-файлы этих корпусов уже содержат расстановку ударений, которая [была сделана](https://habr.com/ru/companies/ashmanov_net/articles/528296/) вручную. 
 
@@ -128,7 +128,7 @@ markup-файлы этих корпусов уже содержат расста
 
 ### Синтез речи
 
-Расстановка ударений и транскрипция могут быть полезны при синтезе речи. [Ноутбук](https://github.com/omogr/omogre/blob/main/XTTS_ru_ipa.ipynb) содержит пример запуска [XTTS](https://github.com/coqui-ai/TTS) модели, обученной на транскрипции для русского языка. Модель обучалась на корпусах [`RUSLAN`](http://dataset.sova.ai/SOVA-TTS/ruslan/ruslan_dataset.tar) и [Common Voice](https://commonvoice.mozilla.org/ru).
+Расстановка ударений и транскрипция могут быть полезны при синтезе речи. [Ноутбук](https://github.com/omogr/omogre/blob/main/XTTS_ru_ipa.ipynb) содержит пример запуска [`XTTS`](https://github.com/coqui-ai/TTS) модели, обученной на транскрипции для русского языка. Модель обучалась на корпусах [`RUSLAN`](http://dataset.sova.ai/SOVA-TTS/ruslan/ruslan_dataset.tar) и [`Common Voice`](https://commonvoice.mozilla.org/ru).
 Веса модели можно скачать с [Hugging Face](https://huggingface.co/omogr/XTTS-ru-ipa)
 
 ## Учёт контекста и некоторые другие особенности

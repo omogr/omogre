@@ -113,16 +113,16 @@ accentuate(sentence_list: list) -> list
 
 ### markup files for acoustic corpora
 
-The script [`ruslan_markup.py`](https://github.com/omogr/omogre/blob/main/ruslan_markup.py) places stresses and generates transcriptions for markup files of the acoustic corpora [`RUSLAN`](https://ruslan-corpus.github.io/) ([RUSLAN with manually accentuated markup](http://dataset.sova.ai/SOVA-TTS/ruslan/ruslan_dataset.tar)) and [`NATASHA`](http://dataset.sova.ai/SOVA-TTS/natasha/natasha_dataset.tar).
+The script [`ruslan_markup.py`](https://github.com/omogr/omogre/blob/main/ruslan_markup.py) places stresses and generates transcriptions for markup files of the acoustic corpora [`RUSLAN`](https://ruslan-corpus.github.io/) ([`RUSLAN with manually accentuated markup`](http://dataset.sova.ai/SOVA-TTS/ruslan/ruslan_dataset.tar)) and [`NATASHA`](http://dataset.sova.ai/SOVA-TTS/natasha/natasha_dataset.tar).
 
-These markup files already contain manually placed stresses (https://habr.com/ru/companies/ashmanov_net/articles/528296/).
+These markup files already contain [manually placed stresses](https://habr.com/ru/companies/ashmanov_net/articles/528296/).
 
 The script [`ruslan_markup.py`](https://github.com/omogr/omogre/blob/main/ruslan_markup.py) generates its own stress placement for these files, allowing for an evaluation of the accuracy of stress placement.
 
 ### Speech Synthesis
 
-Accentuation and transcription can be useful for speech synthesis. The [Colab notebook](https://github.com/omogr/omogre/blob/main/XTTS_ru_ipa.ipynb) contains an example of running the [XTTS](https://github.com/coqui-ai/TTS) model trained on transcription for the Russian language. The model was trained on the [`RUSLAN`](https://ruslan-corpus.github.io/) and [Common Voice](https://commonvoice.mozilla.org/ru) datasets.
-The model weights can be downloaded from [Hugging Face](https://huggingface.co/omogr/XTTS-ru-ipa).
+Accentuation and transcription can be useful for speech synthesis. The [`Colab` notebook](https://github.com/omogr/omogre/blob/main/XTTS_ru_ipa.ipynb) contains an example of running the [`XTTS`](https://github.com/coqui-ai/TTS) model trained on transcription for the Russian language. The model was trained on the [`RUSLAN`](https://ruslan-corpus.github.io/) and [`Common Voice`](https://commonvoice.mozilla.org/ru) datasets.
+The model weights can be downloaded from [`Hugging Face`](https://huggingface.co/omogr/XTTS-ru-ipa).
 
 ## Context Awareness and Other Features
 
