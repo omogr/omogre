@@ -57,7 +57,7 @@ def get_input_token_vocab() -> dict:
     return vocab
 
 
-def token_upper_bound(raw_search_key: list, id_list: list) -> int:
+def token_lower_bound(raw_search_key: list, id_list: list) -> int:
     # binary search (a kind of)
     search_key = tuple(raw_search_key)
     first_pos = 0
@@ -163,28 +163,28 @@ class UnkWords:
         dst_alphabet_len = len(self.dst_alphabet)
         word_len = len(input_ids)
 
-        head_upper_bound = token_upper_bound(input_ids, self.head_transcriptions)
+        head_lower_bound = token_lower_bound(input_ids, self.head_transcriptions)
         head_len = -1
-        for indx, tid in enumerate(self.head_transcriptions[head_upper_bound][0]):
+        for indx, tid in enumerate(self.head_transcriptions[head_lower_bound][0]):
             if indx >= len(input_ids):
                 break
             if tid != input_ids[indx]:
                 break
 
-            pattern_indx = self.head_transcriptions[head_upper_bound][1][indx]
+            pattern_indx = self.head_transcriptions[head_lower_bound][1][indx]
             if pattern_indx in [self.delete_indx, self.dst_stress_indx]:
                 continue
             head_len = indx
        
         reversed_input_ids = list(reversed(input_ids))
-        tail_upper_bound = token_upper_bound(reversed_input_ids, self.tail_transcriptions)
+        tail_lower_bound = token_lower_bound(reversed_input_ids, self.tail_transcriptions)
         tail_len = -1
-        for indx, tid in enumerate(self.tail_transcriptions[tail_upper_bound][0]):
+        for indx, tid in enumerate(self.tail_transcriptions[tail_lower_bound][0]):
             if indx >= len(input_ids):
                 break
             if tid != reversed_input_ids[indx]:
                 break
-            pattern_indx = self.tail_transcriptions[tail_upper_bound][1][indx]
+            pattern_indx = self.tail_transcriptions[tail_lower_bound][1][indx]
             if pattern_indx in [self.delete_indx, self.dst_stress_indx]:
                 continue
             tail_len = indx
@@ -197,11 +197,11 @@ class UnkWords:
             indx1 = word_len - indx - 1            
             is_empty = True
             if indx < head_len:
-                vocab_char = self.head_transcriptions[head_upper_bound][1][indx]
+                vocab_char = self.head_transcriptions[head_lower_bound][1][indx]
                 emission_logprobs[vocab_char] = 0.0
                 is_empty = False
             if indx1 < tail_len:
-                vocab_char = self.tail_transcriptions[tail_upper_bound][1][indx1]
+                vocab_char = self.tail_transcriptions[tail_lower_bound][1][indx1]
                 emission_logprobs[vocab_char] = 0.0
                 is_empty = False
             if is_empty and (indx < word_len-1):
@@ -238,8 +238,8 @@ class UnkWords:
 
         res.reverse()
 
-        if len(res) > 3:
-            # strip BOS_SYMBOL BOS_SYMBOL ... '<EOW>'            
+        if len(res) > 3: # 4?
+            # strip BOS_SYMBOL BOS_SYMBOL ... EOS_SYMBOL
             return replace_auxiliary_symbols(''.join(res[2:-1]))
         return ""
 

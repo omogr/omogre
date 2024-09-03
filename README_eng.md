@@ -124,6 +124,10 @@ The script [`ruslan_markup.py`](https://github.com/omogr/omogre/blob/main/ruslan
 Accentuation and transcription can be useful for speech synthesis. The [`Colab` notebook](https://github.com/omogr/omogre/blob/main/XTTS_ru_ipa.ipynb) contains an example of running the [`XTTS`](https://github.com/coqui-ai/TTS) model trained on transcription for the Russian language. The model was trained on the [`RUSLAN`](https://ruslan-corpus.github.io/) and [`Common Voice`](https://commonvoice.mozilla.org/ru) datasets.
 The model weights can be downloaded from [`Hugging Face`](https://huggingface.co/omogr/XTTS-ru-ipa).
 
+### Wav2vec2 finetuning
+
+Accentuation and transcription can be useful for acustic corpora analysis. The [`Colab` notebook](https://github.com/omogr/omogre/blob/main/Wav2vec2_ru_ipa.ipynb) contains an example of running the wav2vec2-lv-60-espeak-cv-ft model finetuned with transcription of [`RUSLAN`](https://ruslan-corpus.github.io/) and [`Common Voice`](https://commonvoice.mozilla.org/ru).
+
 ## Context Awareness and Other Features
 
 ### Stresses
