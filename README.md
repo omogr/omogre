@@ -128,10 +128,10 @@ markup-файлы этих корпусов уже содержат расста
 
 ### Синтез речи
 
-Расстановка ударений и транскрипция могут быть полезны при синтезе речи. [Ноутбук](https://github.com/omogr/omogre/blob/main/XTTS_ru_ipa.ipynb) содержит пример запуска [`XTTS`](https://github.com/coqui-ai/TTS) модели, обученной на транскрипции для русского языка. Модель обучалась на корпусах [`RUSLAN`](http://dataset.sova.ai/SOVA-TTS/ruslan/ruslan_dataset.tar) и [`Common Voice`](https://commonvoice.mozilla.org/ru).
+Расстановка ударений и транскрипция могут быть полезны при синтезе речи. [Ноутбук](https://github.com/omogr/omogre/blob/main/XTTS_ru_ipa.ipynb) содержит пример запуска [`XTTS`](https://github.com/coqui-ai/TTS) модели, обученной на транскрипции для русского языка. Модель обучалась на корпусах [`RUSLAN`](https://ruslan-corpus.github.io/) и [`Common Voice`](https://commonvoice.mozilla.org/ru).
 Веса модели можно скачать с [Hugging Face](https://huggingface.co/omogr/XTTS-ru-ipa)
 
-### Дообучение Wav2vec2 на транскрипции
+### Извлечение транскрипции из акустических файлов
 
 Расстановка ударений и транскрипция могут быть полезны при анализе речи. [Ноутбук](https://github.com/omogr/omogre/blob/main/Wav2vec2_ru_ipa.ipynb) содержит пример запуска модели wav2vec2-lv-60-espeak-cv-ft дообученной на транскрипции акустических корпусов [`RUSLAN`](https://ruslan-corpus.github.io/) и [`Common Voice`](https://commonvoice.mozilla.org/ru).
 

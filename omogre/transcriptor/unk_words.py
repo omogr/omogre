@@ -4,16 +4,13 @@ import os
 import sys
 import numpy as np
 import pickle
+import json
 
-WINDOW_SIZE = 7
-
-DEFAULT_BIGRAM_EVAL = 20
-MAGIC_LOW_THRESHOLD = -99.0
-GRAM_PROB_MULTIPLIER = -1.31
 INPUT_TEXT_ALPHABET = ' <>-`абвгдеёжзийклмнопрстуфхцчшщъыьэюя?'
 BOS_SYMBOL = '<BOW>'
 DELETE_SYMBOL = '<DELETE>'
-GRAM_WEIGHT = 1.0
+UNK_PATH_EVAL = -100.0
+UNK_PATH_THRESHOLD = -99.0
 
 AUXILIARY_SYMBOL_REPLACEMENTS = [
         (DELETE_SYMBOL, ""),
@@ -25,6 +22,53 @@ AUXILIARY_SYMBOL_REPLACEMENTS = [
         ("'", "`"),
         ("_", "")
     ]
+
+class UnkWordsConfig(object):
+    """Configuration class to store the configuration of a `UnkWords`.
+    """
+    def __init__(self,
+                 window_size=7,
+                 unk_bigram_eval=20,
+                 kind_of_stupid_backoff=-1.31,
+                 gram_data_name='gram_model.pickle'):
+        
+            self.window_size = window_size
+            self.unk_bigram_eval = unk_bigram_eval
+            self.kind_of_stupid_backoff = kind_of_stupid_backoff
+            self.gram_data_name = gram_data_name
+
+    @classmethod
+    def from_dict(cls, json_object):
+        """Constructs a `BertConfig` from a Python dictionary of parameters."""
+        config = BertConfig(vocab_size_or_config_json_file=-1)
+        for key, value in json_object.items():
+            config.__dict__[key] = value
+        return config
+
+    @classmethod
+    def from_json_file(cls, json_file):
+        """Constructs a `BertConfig` from a json file of parameters."""
+        with open(json_file, "r", encoding='utf-8') as reader:
+            text = reader.read()
+        return cls.from_dict(json.loads(text))
+
+    def __repr__(self):
+        return str(self.to_json_string())
+
+    def to_dict(self):
+        """Serializes this instance to a Python dictionary."""
+        output = copy.deepcopy(self.__dict__)
+        return output
+
+    def to_json_string(self):
+        """Serializes this instance to a JSON string."""
+        return json.dumps(self.to_dict(), indent=2, sort_keys=True) + "\n"
+
+    def to_json_file(self, json_file_path):
+        """ Save this instance to a json file."""
+        with open(json_file_path, "w", encoding='utf-8') as writer:
+            writer.write(self.to_json_string())
+
 
 def invert_vocab(vocab: dict) -> dict:
     """Inverts a dictionary, swapping keys and values.
@@ -78,8 +122,12 @@ def token_lower_bound(raw_search_key: list, id_list: list) -> int:
 
 
 class UnkWords:
-    def __init__(self, data_path: str):
-        transcriptor_data_path = os.path.join(data_path, 'gram_model.pickle')
+    def __init__(self, data_path: str, config=None):
+        if config is None:
+            self.config = UnkWordsConfig()
+        else:
+            self.config = config
+        transcriptor_data_path = os.path.join(data_path, self.config.gram_data_name)
         with open(transcriptor_data_path, 'rb') as finp:
             (
                 self.dst_alphabet,
@@ -116,12 +164,12 @@ class UnkWords:
             emission_logprobs (np.ndarray): Character emission probabilities.
 
         Returns:
-            list: The top `WINDOW_SIZE` best paths for the current step.
+            list: The top `config.window_size` best paths for the current step.
         """
         
         new_best_paths: dict = {}
         for char_indx, t_char_eval in enumerate(emission_logprobs):
-            if t_char_eval < MAGIC_LOW_THRESHOLD:
+            if t_char_eval < UNK_PATH_THRESHOLD:
                 continue
             next_dst_char = self.inv_dst_alphabet[char_indx]
             
@@ -130,10 +178,10 @@ class UnkWords:
                 if key in self.gram_prob:
                     current_gram_eval = self.gram_prob[key]
                 else:
-                    current_gram_eval = GRAM_PROB_MULTIPLIER * self.bigram_eval.get(
-                        (phoneme1, phoneme2), DEFAULT_BIGRAM_EVAL)
+                    current_gram_eval = self.config.kind_of_stupid_backoff * self.bigram_eval.get(
+                        (phoneme1, phoneme2), self.config.unk_bigram_eval)
                     
-                new_path_eval = prev_path_eval + GRAM_WEIGHT * current_gram_eval + t_char_eval
+                new_path_eval = prev_path_eval + current_gram_eval + t_char_eval
                 new_key = (phoneme2, next_dst_char)
                 if new_key not in new_best_paths:
                     new_best_paths[new_key] = (new_path_eval, path_indx)
@@ -146,7 +194,7 @@ class UnkWords:
                 (path_eval, path_indx, phoneme1, phoneme2)
                     for (phoneme1, phoneme2), (path_eval, path_indx) in new_best_paths.items()
             ], reverse=True)
-        return best_list[:WINDOW_SIZE]
+        return best_list[:self.config.window_size]
 
     def transcribe(self, input_word_text: str) -> str:
         """
@@ -193,7 +241,7 @@ class UnkWords:
         best_path[1] = [ (0.0, 0, BOS_SYMBOL, BOS_SYMBOL) ]
         indx = 2
         while indx < word_len:
-            emission_logprobs = np.ones(dst_alphabet_len, dtype=np.float32) * -100.0            
+            emission_logprobs = np.ones(dst_alphabet_len, dtype=np.float32) * UNK_PATH_EVAL            
             indx1 = word_len - indx - 1            
             is_empty = True
             if indx < head_len:

@@ -95,7 +95,7 @@ class AccentTokenizer:
         return self.encode(''.join(letters_list))
     
     def get_inf_tokens(self, sentence0):
-        sentence = sentence0.replace('+', '')
+        sentence = sentence0.replace('+', ' ')
         tokens = []
         tokenizer_bos = 2
         tokenizer_sep = 3
