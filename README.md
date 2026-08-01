@@ -4,7 +4,7 @@
 
 [English README](https://github.com/omogr/omogre/blob/main/README_eng.md)
 
-[Есть новая версия этой библиотеки, с рефакторингом и морфологией.](https://github.com/omogr/udarenie)
+[Есть новая версия этой библиотеки, с пользовательским словарем и морфологией.](https://github.com/omogr/udarenie)
 
 [Есть сравнение этой библиотеки с другими аналогичными библиотеками. Результаты accent_engine очень близки к результатам omogre, так как accent_engine и omogre используют одну и ту же модель и отличаются только рефакторингом.](https://github.com/omogr/russian-stress-benchmark)
 
